@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON_VERSION = 'pyton3'
+    }
+
     stages {
         stage('Download Code / Checkout Code') {
             steps {
@@ -11,13 +15,13 @@ pipeline {
 
         stage('Show Python Version') {
             steps {
-                sh 'python3 --version'
+                sh '$PYTHON_VERSION --version'
             }
         }
 
         stage('Run Python Program') {
             steps {
-                sh 'python3 read.py'
+                sh '$PYTHON_VERSION read.py'
             }
         }
     }
